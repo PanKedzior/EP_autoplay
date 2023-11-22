@@ -5,6 +5,10 @@ class Diamond:
         self.x5 = x5
         self.x_position = None
         self.y_position = None
+        self.in_combo = False
+        self.check_vertically = True
+        self.check_horizontally = True
+        self.was_moved = False
 
     def __del__(self):
         pass
