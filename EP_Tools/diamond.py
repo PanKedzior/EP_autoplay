@@ -1,10 +1,10 @@
 class Diamond:
-    def __init__(self, color, x4=False, x5=False):
+    def __init__(self, color, x_position, y_position, x4=False, x5=False):
         self.color = color
         self.x4 = x4
         self.x5 = x5
-        self.x_position = None
-        self.y_position = None
+        self.x_position = x_position
+        self.y_position = y_position
         self.in_combo = False
         self.check_vertically = True
         self.check_horizontally = True
