@@ -43,9 +43,9 @@ class Map:
         print(printed_table)
 
     def randomize_table(self):
-        self.table = np.array([[Diamond(np.random.randint(1, 5), x, y) for x in range(self.__x_size)] for y in range(self.__y_size)])
+        self.table = np.array([[Diamond(np.random.randint(0, 5), x, y) for x in range(self.__x_size)] for y in range(self.__y_size)])
         while self.check_for_combos():
-            self.table = np.array([[Diamond(np.random.randint(1, 5), x, y) for x in range(self.__x_size)] for y in range(self.__y_size)])
+            self.table = np.array([[Diamond(np.random.randint(0, 5), x, y) for x in range(self.__x_size)] for y in range(self.__y_size)])
         self.points = [0, 0, 0, 0, 0]
 
     def move_left(self, x, y):
@@ -137,7 +137,7 @@ class Map:
         for row_number, row in enumerate(self.table):
             for column_number, diamond in enumerate(row):
                 if diamond is np.nan:
-                    self.table[row_number][column_number] = Diamond(np.random.randint(1, 5), column_number, row_number)
+                    self.table[row_number][column_number] = Diamond(np.random.randint(0, 5), column_number, row_number)
                 else:
                     diamond.was_moved = False
                     diamond.check_vertically = True
@@ -176,7 +176,7 @@ class Map:
                             for i in range(combo_length_horizontally):
                                 self.points[diamond.color] += 1
                                 self.table[row_number + i][column_number].check_horizontally = False
-                                if self.table[row_number+i][column_number].x4:
+                                if self.table[row_number + i][column_number].x4:
                                     additional_diamonds = self.get_diamonds_list_on_use_x4(self.table[row_number + i][column_number])
                                 elif self.table[row_number + i][column_number].x5:
                                     additional_diamonds = self.get_diamonds_list_on_use_x5(self.table[row_number + i][column_number])
@@ -226,3 +226,4 @@ start = time.perf_counter()
 a = Map()
 end = time.perf_counter()
 print(end-start)
+print('end')
